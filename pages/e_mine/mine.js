@@ -93,12 +93,7 @@ Page({
             })
           }
         }
-        // if (res.data.phone == null || res.data.phone == ''){
-
-        //   wx.redirectTo({
-        //     url: '../bindphone/login?mine=' + 1
-        //   })
-        // }
+       
         that.setData({
           user: res.data
         })
