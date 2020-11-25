@@ -1,0 +1,273 @@
+page{
+  font-size: 28rpx;
+}
+.a-nav{
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.a-nav-title{
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  font-family:PingFang-SC-Medium;
+  font-size:36rpx;
+  letter-spacing:2px;
+}
+.a-nav .back{
+  width: 34rpx;
+  height: 34rpx;
+  position: absolute;
+  bottom: 8rpx;
+  left: 0;
+  padding: 10px 15px;
+}
+.test{
+  position: absolute;
+  top: 220rpx;
+  width: 100%;
+  height: 420rpx;
+}
+swiper{
+  height: 100%;
+}
+/* .content{
+  font-size: 16px;
+  color: #333;
+  padding: 20rpx 40rpx;
+} */
+swiper-item{
+  text-align: center;
+   
+}
+swiper-item image{
+  width: 100%;
+ 
+}
+.box{
+  width: 100%;
+  height:500rpx;
+  display: inline-block;
+  margin-top: 40px;
+  box-sizing: border-box;
+  
+  position:relative;
+  top:33%;
+  transform:translateY(-45%);
+}
+.boxs_i{
+  position: absolute;
+  top: 300rpx;
+  left: 100rpx;
+}
+ .top_img{
+        width: 100%;
+        height: 680rpx;
+        background-size: cover;
+        color: #fff;
+    }
+ .top_dao{
+        position: relative;
+        position: absolute;
+        bottom:18rpx;
+        left: 10rpx;
+        width: 160rpx;
+        height: 62rpx;
+        border-radius: 40rpx;
+        background: rgba(64, 64, 66);
+        
+    }
+    .top_dao image{
+        width: 32rpx;
+        height: 32rpx;
+    }
+    .b_back{
+        position: absolute;
+        left: 20rpx;
+        top: 16rpx;
+    }
+    .daoh{
+        position: absolute;
+        right: 30rpx;
+        top: 16rpx;
+    }
+    .top_img{
+        width: 100%;
+        height: 370rpx;
+         background-size: cover;
+    }
+    .head{
+      position: absolute;
+      left: 40rpx;
+    }
+    .tx{
+      float: left;
+ 
+      margin-right: 20rpx;
+    }
+    .tx image{
+      width: 80rpx;
+      height: 80rpx;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+    .tx_n{
+      color: #fff;
+      font-size: 30rpx;
+      display: inline-block;
+      margin-top: 16rpx;
+      max-width: 130rpx;
+      margin-right: 20rpx;
+    }
+    .biaos{
+      display: inline-block;
+      border: 1rpx solid #fff;
+      padding: 0rpx 8rpx;
+      margin-left: 20rpx;
+      box-sizing: border-box;
+      border-radius: 4rpx;
+      color: #fff;
+      font-size: 20rpx;
+    }
+    .gongy{
+    font-size: 26rpx;
+    color: #fff;
+    display: inline-block;
+}
+.gongy image{
+  width: 100rpx;
+  height: 32rpx;
+  margin-right: 90rpx;
+  margin-left: 10rpx;
+}
+/*  */
+.qy{
+  width: 100%;
+  text-align: center;
+}
+.qy image{
+  width: 90%;
+  height: 20rpx;
+}
+
+.dind{
+    font-size: 22rpx;
+    color: #999;
+    width: 100%;
+     margin-top: 40rpx;
+}
+.din-1{
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.din-img{
+    width: 48rpx;
+    height: 48rpx;
+    display: inline-block;
+    position: relative;
+}
+.din-img image{
+    width: 100%;
+    height: 100%;
+}
+.shuom{
+  margin-top: 40rpx;
+  color: #666666;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+}
+.shuom>view{
+  line-height: 50rpx;
+}
+.tab-h{
+  white-space: nowrap;
+  width: 100%;
+}
+.tab{
+  width: 100%;
+  margin: 0 36rpx;
+  display: inline-block;
+}
+.submit{
+   width: calc(100% - 40rpx);
+   margin-left: 20rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  line-height: 80rpx;
+  height: 80rpx;
+  color: #fff;
+   background:linear-gradient(to right, #f12200, #ff4e17);
+   border-radius: 40rpx;
+   font-size: 28rpx;
+}
+.pos{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+ 
+}
+.jihuo{
+ 
+  position: relative;
+  top: 0rpx;
+  right: -230rpx;
+   background:linear-gradient(to right, #f12200, #ff4e17);
+  width: 130rpx;
+  height: 46rpx;
+  text-align: center;
+  line-height: 46rpx;
+  color: #fff;
+ display: inline-block;
+ border-radius: 30rpx
+}
+.shouyi{
+    margin: 30rpx;
+    width: calc(100% - 40rpx);
+    margin-left: 10rpx;
+    height: 120rpx;
+   
+   
+    border-radius: 12rpx;
+}
+.shouy-z{
+    display: inline-block;
+    width: 33%;
+   
+    margin-top: 20rpx;
+    text-align: center;
+}
+.sho_img image{
+  width: 45rpx;
+  height: 48rpx;  
+}
+.tit{
+  text-align: center;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+}
+.tite{
+  color: #999999;
+  line-height: 64rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+.tui-modal-foot>button{
+  width: 190rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 30rpx;
+}

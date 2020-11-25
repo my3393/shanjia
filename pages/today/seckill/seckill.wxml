@@ -1,0 +1,84 @@
+<!--packageA/pages/today/seckill/seckill.wxml-->
+<view wx:if='{{tar == 1}}'>
+  <view class="top_img">
+    <image  src="https://www.xingtu-group.cn/xcx_img/seckill.png"></image>
+  </view>
+
+  <view class="time">
+    <view wx:for='{{tag}}'  bindtap="tar" id="{{item}}" class="{{current == index ? 'active':''}}" data-index="{{index}}">
+      <view>{{item}}</view>
+      <view>抢购</view>
+    </view>
+   
+  </view>
+  <view wx:if='{{list.length == 0}}'>
+    <graph introduce='该时段没有抢购商品哦' />
+  </view>
+   <view wx:else>
+    <view  class="nav" wx:for='{{list}}' >
+      <view class="nav_top">
+        <view>
+          <image src="/images/store.png"></image>
+          <text>{{item.storeName}}</text>
+        </view>
+        <view class="nav_top_r">
+          <text>起送{{item.sendFee}}</text>
+          <text>配送{{item.postageFee}}</text>
+        </view>
+      </view>
+      <view class="nav_good clearfix">
+        <image src="{{item.productDefaultImgOss}}"></image>
+        <view class="dan">{{item.productName}}</view>
+        <view class="ilmit">限{{item.restrictBuyCount}}人份</view>
+        <view>
+          <view class="pro">
+          <progress class="progress" activeColor='#f12200' backgroundColor='#ff4e17' percent='{{item.percentage}}' border-radius='10'  stroke-width='7'></progress>
+          <text>余{{item.productInventory}}件</text>
+          </view>
+          <view class="snap" bindtap="detail" id="{{item.storeId}}">
+          去抢购
+          </view>
+        </view>
+        <view class="price"><text style="font-size:12rpx">￥</text>{{item.activityPrice}} <text class="cha">{{item.salePrice}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:else>
+  <view class="top_img">
+    <image  src="https://www.xingtu-group.cn/xcx_img/seckill.png"></image>
+  </view>
+    <view wx:if='{{list.length == 0}}'>
+    <graph introduce='今日暂无特价商品去附近店家看看吧' />
+    <view class="guang" bindtap="guang">逛逛</view>
+  </view>
+  <view wx:else>
+    <view  class="nav" wx:for='{{list}}' >
+      <view class="nav_top">
+        <view>
+          <image src="/images/store.png"></image>
+          <text>{{item.storeName}}</text>
+        </view>
+        <view class="nav_top_r">
+          <text>起送{{item.sendFee}}</text>
+          <text>配送{{item.postageFee}}</text>
+        </view>
+      </view>
+      <view class="nav_good clearfix">
+        <image src="{{item.productDefaultImgOss}}"></image>
+        <view class="dan">{{item.productName}}</view>
+        <view class="ilmit">限{{item.restrictBuyCount}}人份</view>
+        <view>
+          <view class="pro">
+          <progress class="progress" activeColor='#f12200' backgroundColor='#ff4e17' percent='{{item.percentage}}' border-radius='10'  stroke-width='7'></progress>
+          <text>余{{item.productInventory}}件</text>
+          </view>
+          <view class="snap" bindtap="detail" id="{{item.storeId}}">
+          去抢购
+          </view>
+        </view>
+        <view class="price"><text style="font-size:12rpx">￥</text>{{item.activityPrice}} <text class="cha">{{item.salePrice}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>

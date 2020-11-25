@@ -1,0 +1,27 @@
+<!--pages/wallet_detail/wallet_detail.wxml-->
+
+<view class="li" wx:if='{{detail.length != 0}}'>
+  <view class="list" wx:for='{{detail}}' wx:key='{{index}}' >
+    <view>
+      <view class='list_tit dan' wx:if='{{item.recordInfo != null}}'>{{item.recordInfo}}</view>
+      <view class='list_tit dan' wx:else></view>
+      <view class="list_r yan">+{{item.amount}}</view>
+    </view>
+    <view class="list_date">
+      <view>{{item.createDate}}</view>
+      <view class="list_r" wx:if='{{item.recordStatus == 0}}'>待结算</view>
+       <view class="list_r" wx:if='{{item.recordStatus == 1 == item.recordType == 2}}'>已提现</view>
+        <view class="list_r" wx:if='{{item.recordStatus == 2}}'>审核中</view>
+         <view class="list_r" wx:if='{{item.recordStatus == 3}}'>提现驳回</view>
+
+    </view>
+  </view>
+</view>
+
+<view wx:else>
+   <view class="mepor">
+       <image src="https://xt-ylsj.oss-cn-shenzhen.aliyuncs.com/xcx_sxy_img/course_dump.png"></image>
+       <view>你还没有收益哦</view>
+    </view>
+  
+ </view>

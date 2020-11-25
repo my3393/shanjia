@@ -1,0 +1,88 @@
+/* pages/activation/activation.wxss */
+@import'../card/assets_expel/assets_expel';
+.inpt{
+  display: inline-block;
+  border-bottom: 1rpx solid #CCCCCC;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  margin-left: 36rpx;
+  width: 480rpx;
+   color: #000;
+}
+.nav{
+  padding: 0;
+}
+.inpts{
+  display: inline-block;
+  border-bottom: 1rpx solid #CCCCCC;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  width: 400rpx;
+  color: #000;
+}
+.imag{
+  margin-top: 60rpx;
+  width: 100%;
+  text-align: center;
+
+}
+.imag image{
+  width: 250rpx;
+  height: 250rpx;
+}
+.tag>view{
+  width: 50%;
+  height: 79rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 79rpx;
+  background: #f9f9f9;
+  color: #666;
+}
+.active{
+  background: #fff !important;
+  color: #000 !important;
+}
+.tar{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.card{
+   width: calc(100% - 40rpx);
+  margin-left: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: rgba(244, 43, 5, 0.4);
+  color: #f12200;
+}
+page{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.nav{
+  padding: 30rpx;
+  background: #f9f9f9;
+}
+.inpts{
+  margin-top: 0;
+}
+.tag>view{
+  width: 50%;
+  height: 79upx;
+  display: inline-block;
+  text-align: center;
+  line-height: 79upx;
+  background: #f9f9f9;
+  color: #666;
+}
+.active{
+  background: #fff !important;
+  color: #000 !important;
+}
+.resd{
+  padding: 20rpx;
+  box-sizing: border-box;
+}

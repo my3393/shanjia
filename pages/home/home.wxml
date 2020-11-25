@@ -1,0 +1,364 @@
+<!--packageA/pages/store_home/store_home.wxml-->
+<view hidden="{{show}}">
+  <view class="top_b"></view>
+  <view class="hone clearfix" bindtap="showPopup3">
+    <image src="{{store.storeHeadImgUrlOss}}"></image>
+    <view class="h1 dan">
+      {{store.storeName}}
+    </view>
+    <view class="hone_rig">
+      <!-- <view>
+        <image src="/images/xinxin_n.png"></image>
+        <view>收藏</view>
+      </view> -->
+      <button open-type="share" class="share" catchtap="onShareAppMessage">
+        <image src="/images/fenx.png"></image>
+        <view>分享</view>
+      </button>
+    </view>
+    <view class="qis">
+      <text>起送￥{{store.sendFee}}</text>
+      <text>配送费￥{{store.postageFee}}</text>
+    </view>
+    <view class="qis">{{distance}}</view>
+    <view class="jies dan" wx:if='{{store.storeNotice != null}}'>{{store.storeNotice}}</view>
+    <view wx:if='{{store.storeLabel != null}}'>
+      <text>{{store.storeLabel}}</text>
+    </view>
+  </view>
+
+  <view class="search">
+    <image src="../../images/search.png"></image>
+    <input placeholder="商品名称" bindfocus="blur"></input>
+  </view>
+  <!-- <view>
+    <swiper class="banner" indicator-dots="true" circular="true" autoplay="true" duration="1000" indicator-color="#a7a7a7" indicator-active-color="#fe5ba9">
+      <block>
+        <swiper-item wx:for='{{banner}}' id="{{item.id}}" bindtap="banner" class='swiper' data-xcx='{{item.xcx}}' data-xcxurl='{{item.xcxUrl}}'>
+          <image class="banner_img" src="{{item.advertiseImgOss}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> -->
+  <!-- 商品分类 -->
+  <scroll-view scroll-y scroll-with-animation class="tab-view" scroll-top="{{scrollTop}}" style="height:{{menuHeight}}px">
+    <view wx:for="{{tabbar}}" wx:key="{{index}}" class="tab-bar-item {{currentTab==index ? 'active' : ''}}" data-current="{{index}}" catchtap="swichNav" id="{{item.id}}">
+      <text>{{item.typeName}}</text>
+    </view>
+    <view style="height:100rpx;"></view>
+  </scroll-view>
+
+  <!-- 右侧 -->
+  <scroll-view class="right-box" scroll-y>
+    <!--内容部分 start 自定义可删除-->
+    <block>
+      <view class="page-view">
+
+        <view class="class-box">
+          <view class="class-item">
+            <view class="class-name">{{typeName}}</view>
+            <view wx:if='{{detail.length == 0}}'>
+              <view class="dump">
+                <image src="/images/mine_fund.png"></image>
+                <view>该类型下商家还没上架商品哦</view>
+              </view>
+            </view>
+            <view wx:else>
+              <view class="clearfix" wx:for="{{detail}}" wx:key="{{index}}">
+                <view class="g-box" catchtap="pervie" id="{{item.id}}">
+                  <image src="{{item.productDefaultImgOss}}" class="g-image"  />
+                  <view class="g-title dan">{{item.productName}}</view>
+                  <view class="shou">售{{item.totalSaleNum}}
+                    <text class="xian" wx:if='{{item.restrictBuyCount >0 && item.promotionType ==0}}'>限{{item.restrictBuyCount}}{{item.productUnit}}/人</text> </view>
+                  <view>
+                  <!-- <view style="margin-bottom:10rpx">{{item.productUnit}}</view> -->
+                    <view wx:if='{{item.activityPrice}}'>
+                      <text class="price"><text style="font-size:14rpx">￥</text >{{item.activityPrice}}</text>
+                      <text style="color:#ccc">￥{{item.salePrice}}</text>
+                    </view>
+                    <view wx:else>
+                      <text class="price"><text style="font-size:14rpx">￥</text >{{item.salePrice}}</text>
+
+                    </view>
+                    <view class="yibei">艺呗可抵{{item.Ratio}}</view>
+                    <view class='goodsnum'>
+                   
+                      <view class="suan" id="{{item.id}}" catchtap="addCount" data-index="{{index}}" data-select-index="{{idx}}" hover-class="addCount_h">
+                        +
+                      </view>
+                    </view>
+                  </view>
+                </view>
+
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+    </block>
+    <!--内容部分 end 自定义可删除-->
+  </scroll-view>
+</view>
+<view hidden="{{!show}}">
+ <view class="search" >
+    <image src="../../images/search.png"></image>
+    <input placeholder="商品名称"  bindinput="searchInput"></input>
+    <view bindtap="blur">取消</view>
+  </view>
+  <view style="padding-left:20rpx;box-sizing: border-box;">
+        <view wx:if='{{searchList.length == 0}}'>
+              <view class="dump" style="margin-top:200rpx;">
+                <image src="/images/mine_fund.png"></image>
+                <view>没有这个商品哦</view>
+              </view>
+            </view>
+            <view wx:else>
+              <view class="clearfix" wx:for="{{searchList}}" wx:key="{{index}}" >
+                <view class="g-box" bindtap="pervie" id="{{item.id}}">
+                  <image src="{{item.productDefaultImgOss}}" class="g-image"   />
+                  <view class="g-title dan">{{item.productName}}</view>
+                  <view class="shou">售{{item.totalSaleNum}}
+                    <text class="xian" wx:if='{{item.restrictBuyCount >0 && item.promotionType ==0}}'>限{{item.restrictBuyCount}}{{item.productUnit}}/人</text> </view>
+                  <view>
+                  <!-- <view style="margin-bottom:10rpx">{{item.productUnit}}</view> -->
+                    <view>
+                      <text class="price"><text style="font-size:14rpx">￥</text >{{item.salePrice}}</text>
+
+                    </view>
+                    <view class="yibei">艺呗可抵{{item.Ratio}}</view>
+                    <view class='goodsnum'>
+                      <!-- <view class="suan reduction" catchtap="minusCount" data-index="{{index}}" data-select-index="{{idx}}" hover-class="reduction_h">
+                        -
+                      </view> -->
+                      <!-- <view class="shu">{{item.buyCount}}</view> -->
+                      <view class="suan" id="{{item.id}}" catchtap="addCount" data-index="{{index}}" data-select-index="{{idx}}" hover-class="addCount_h">
+                        +
+                      </view>
+                    </view>
+                  </view>
+                </view>
+
+              </view>
+            </view>
+  
+  </view>
+  
+
+</view>
+
+<view style="height:100rpx;"></view>
+<!-- footer -->
+<view class="foote">
+  <view class="foote_left">
+    <view bindtap="cart" class="cart">
+      <image src="/images/shop.png"></image>
+      <view class="cart_num" wx:if='{{cart_num != 0}}'>{{cart_num}}</view>
+      <view>购物车</view>
+    </view>
+    <view class="hj">合计：
+      <text class="price"><text style="font-size:14rpx">￥</text >{{z_price}}</text>
+      <text class="sale_page" wx:if='{{cart.length != 0 && store.postageFee != 0}}'>另需配送费 ￥{{store.postageFee}}</text>
+    </view>
+  </view>
+  <view class="foote_right">
+
+    <view>
+      <button size="mine" class='placeanorder' bindtap="submit">
+        结算({{cart_num}})
+
+
+      </button>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 弹出层 -->
+
+
+
+<van-popup show="{{ show1 }}" bind:close="onClose" closeable>
+  <view class="show1 clearfix">
+    <view class="show1_tit">蒙牛特仑苏纯牛奶蒙牛特仑苏纯牛奶</view>
+    <!-- <image src="../../../images/ylsj.png"></image> -->
+    <view class="show1_sell">售23
+      <text class="show1_xian">限一人份</text>
+    </view>
+    <view style="font-size:40rpx">
+      <text class="price"><text style="font-size:24rpx">￥</text >28.8</text>
+      <view class="show1_cart">加入购物车</view>
+    </view>
+  </view>
+</van-popup>
+<!-- 购物车弹窗 -->
+<van-popup show="{{ show2 }}" bind:close="onClose2" position='bottom' custom-style="height: 70%" round>
+  <view class="show2_top" wx:if='{{sendFee > 0}}'>还差{{sendFee}}元配送</view>
+  <view class="show2_top" wx:else>已满足配送要求</view>
+  <view class="show2_midd">
+    <text>共{{cart_num}}件商品</text>
+    <view class="show2_detel" bindtap="c_cart">
+      <image src="/images/detele.png"></image>
+      清空购物车
+    </view>
+  </view>
+  <scroll-view scroll-y='true' class="good_scroll">
+    <view class="show2 clearfix">
+
+
+      <view class="show2_good dan" wx:for='{{cart}}' wx:key='item.id'>
+        <image src="{{item.productDefaultImgOss}}"></image>
+        <view class="dan">{{item.productName}}</view>
+        <view style="margin-top:8rpx">{{item.productUnit}}</view>
+        <view style="margin-top:8rpx">
+          <view wx:if='{{item.promotionType == 0}}'>
+            <text class="price"><text style="font-size:14rpx">￥</text >{{item.salePrice}}</text>
+
+          </view>
+          <view wx:else>
+            <text class="price"><text style="font-size:14rpx">￥</text >{{item.activityPrice}}</text>
+            <text style="color:#ccc">￥{{item.salePrice}}</text>
+
+          </view>
+          <view class="yibei">艺呗可抵{{item.Ratio}}</view>
+          <view class='goodsnum'>
+            <view class="suan reduction" id="{{item.productId}}" catchtap="minusCount_num" data-index="{{index}}" data-select-index="{{idx}}">
+              -
+            </view>
+            <view class="shu">{{item.buyCount}}</view>
+            <view class="suan" id="{{item.productId}}" catchtap="addCount_num" data-index="{{index}}" data-select-index="{{idx}}" hover-class="addCount_h">
+              +
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- <view>
+        <view class="show2_midd">
+          <text>失效商品</text>
+          <view class="show2_detel">
+
+            删除
+          </view>
+        </view>
+      </view> -->
+    </view>
+
+  </scroll-view>
+  <view class="foote">
+    <view class="foote_left">
+      <view bindtap="cart" class="cart">
+        <image src="/images/shop.png"></image>
+        <view class="cart_num" wx:if='{{cart_num != 0}}'>{{cart_num}}</view>
+        <view>购物车</view>
+      </view>
+      <view class="hj">合计：
+        <text class="price"><text style="font-size:14rpx">￥</text >{{z_price}}</text>
+        <text class="sale_page" wx:if='{{cart.length != 0 && store.postageFee != 0}}'>另需配送费 ￥{{store.postageFee}}</text>
+      </view>
+    </view>
+    <view class="foote_right">
+
+      <view>
+        <button size="mine" class='placeanorder' bindtap="submit">
+          结算({{cart_num}})
+
+
+        </button>
+      </view>
+    </view>
+  </view>
+</van-popup>
+<!-- 店铺信息 -->
+<van-popup show="{{ show3}}" bind:close="onClose3" closeable close-icon="close" position='bottom' custom-style="height: 70%" round>
+  <scroll-view scroll-y='true' class="store_scroll">
+    <view class="h1" style="width:100%">{{store.storeName}}</view>
+    <view>
+      <view class="store_adress">
+        <image src="/images/dinw.png"></image>
+        <view>{{store.provinceName}}{{store.cityName}}{{store.areaName}}{{store.townName}}{{store.detailAddress}}</view>
+      </view>
+      <view class="store_adress" bindtap="tap_phone">
+        <image src="/images/phone.png"></image>
+        <view>点击联系商家</view>
+      </view>
+      <view class="store_adress">
+        <image src="/images/daojis_h.png"></image>
+        <view>{{store.startTime}}-{{store.endTime}}</view>
+      </view>
+      <view class="store_adress">
+        <image src="/images/d-sh.png"></image>
+        <view>配送：由商家提供配送服务</view>
+      </view>
+    </view>
+    <view class="h1 h2">公告</view>
+    <view style="color:#999999">{{store.storeNotice}}</view>
+    <view class="h1 h2">店铺照片</view>
+    <scroll-view class="store_img" scroll-x>
+      <image wx:for='{{store.storeImgsOss}}' src="{{item}}" bindtap="preview" id="{{item}}"></image>
+    </scroll-view>
+    <view class="h1 h2">店铺资质</view>
+    <view class="store_img">
+      <image src="{{store.licenseImgOss}}" bindtap="license"></image>
+    </view>
+  </scroll-view>
+
+</van-popup>
+<!-- 规格弹窗 -->
+<view hidden='{{ishidegg}}' class='mark'>
+  <!-- <view class="gug_all" bindtap="gug_all"></view> -->
+  <view class="gug clearfix {{!isgug ? 'gug_show' : ''}} ">
+
+    <view class='close' catchtap='showgg'>
+      <image src='/images/xx.png'></image>
+    </view>
+    <view class='gouwtu'>
+      <view class='ggtup'>
+        <image src='{{title_img}}'></image>
+      </view>
+      <view class='pric'>
+        <text style="font-size:22rpx;">￥</text> {{price}}
+      </view>
+      <view class='chos'>
+        请选择：
+        <view class='chim'>{{selected}}</view>
+
+      </view>
+    </view>
+
+    <!-- 规格型号 -->
+
+    <view class='gund'>
+      <view class='chima clearfix ' wx:for='{{spec}}' wx:for-index='idx'>
+        <view class='cm' catchtap='size'>{{spec[idx].name}}</view>
+        <view>
+          <view class='dax {{item.isSelect ?"actives":""}}' catchtap='pack' wx:for='{{spec[idx].entries}}' wx:for-index='ids' data-attr-id='{{item.id}}' data-attr-value='{{item.value}}' data-select-index="{{idx}}" data-attr-index="{{ids}}">
+            {{spec[idx].entries[ids].value}}
+          </view>
+
+        </view>
+      </view>
+      <view class='shul'>
+        <view>购买数量</view>
+        <view class='jis'>
+          <view class='beij' catchtap='reduction'>-</view>
+          <view class='duos beij'>{{num}}</view>
+          <view class='beij' catchtap='add'>+</view>
+        </view>
+      </view>
+
+    </view>
+    <view class='duih' catchtap='confirm'>
+      确定
+    </view>
+
+  </view>
+</view>
+
+<!--  -->
+<tui-modal show="{{modal}}" bind:click="handleClick" bind:cancel="hide" content="确定清空购物车吗" color="#333" size="32" shape="circle" button='{{button}}'>
+
+
+</tui-modal>

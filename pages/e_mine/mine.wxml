@@ -1,0 +1,260 @@
+<!-- <view style="height:{{titleBarHeight}}px;padding-top:{{statusBarHeight}}px">
+  <view class="header"></view>
+</view> -->
+<view class="top_img" style="background-image: url(https://www.xingtu-group.cn/xcx_img/mine_top.png)">
+
+  <view class="top" hidden="{{!isshow}}">
+    <view class="top-tx" wx:if='{{user.id == null}}' bindtap="login">
+      <view class="tx">
+        <image src="../../images/tx.png" />
+      </view>
+      <view class="dengl">
+        点击登录
+        <!-- <view class='chak'>查看编辑个人资料</view> -->
+      </view>
+      <view class="shouyi">
+        <view class="shouy-z">
+          <view>0</view>
+          <view class="shouy-n">分销收益</view>
+        </view>
+        <view class="shouy-z">
+          <view>0</view>
+          <view class="shouy-n">我的资产</view>
+        </view>
+        <view class="shouy-z">
+          <view>0</view>
+          <view class="shouy-n">艺呗</view>
+        </view>
+      </view>
+    </view>
+    <view class="top-tx" wx:else>
+      <view class="tx" wx:if='{{user.headImgUrl == null}}' bindtap="person">
+        <image src="../../images/tx.png" mode="widthFix" />
+      </view>
+      <view class="tx" wx:else bindtap="person">
+        <image src="{{user.headImgUrl}}" mode="widthFix" />
+      </view>
+      <view class="person" bindtap="person">
+        <view>
+          <view class="per-n" wx:if='{{user.userName == null}}'>{{phone}}</view>
+          <view class="per-n" wx:else>
+            <text class="dan" style="max-width:400rpx;display:inline-block">{{user.userName}}</text>
+            <view class="gongy" style="display:inline-block">
+              <image wx:if='{{user.memberType == 1}}' src="../../images/mine_3.png"></image>
+              <image wx:if='{{user.memberType == 2}}' src="../../images/mine_4.png"></image>
+              <!-- <image wx:if='{{user.memberType == 3}}' src="../../images/mine_5.png"></image> -->
+            </view>
+          </view>
+          <image src="{{code}}" class="ewm" catchtap="ewm"></image>
+          <!-- <view class="hhr" catchtap="zhin">分享操作指南</view> -->
+          <!-- <view class="hui" wx:if='{{user.memberType == 1}}'>
+            <image src="../../images/aix (3).png" />
+          </view>
+           <view class="hui" wx:if='{{user.memberType == 2}}'>
+            <image src="../../images/aix0.png" />
+          </view>
+           <view class="hui" wx:if='{{user.memberType == 3}}'>
+            <image src="../../images/aix (4).png" />
+          </view> -->
+        </view>
+        <view>
+          <view class="gongy">
+            <!-- <image  src="../../images/mine_1.png"></image> -->
+            <!-- <image wx:if='{{user.isCollegeStudent ==1}}' src="../../images/mine_2.png"></image>
+            <image wx:if='{{user.memberType == 1}}' src="../../images/mine_3.png"></image>
+            <image wx:if='{{user.memberType == 2}}' src="../../images/mine_4.png"></image>
+            <image wx:if='{{user.memberType == 3}}' src="../../images/mine_5.png"></image> -->
+          </view>
+
+        </view>
+        <view class="jies dan" wx:if='{{user.publicSlogan}}'>{{user.publicSlogan}}</view>
+        <!-- <view class="jies" wx:else>请设置你的公益宣言</view> -->
+      </view>
+      <view class="members" bindtap="member" wx:if='{{user.memberType == 0}}'>
+        <view class="kait">
+          <image src="../../images/aix2.png" />
+        </view>
+        <view class="kait-n">开通会员</view>
+      </view>
+      <view class="shouyi">
+        <view class="shouy-z" catchtap="wallet">
+          <view>{{user.remainTotalAmount}}</view>
+          <view class="shouy-n">分销收益></view>
+        </view>
+        <view class="shouy-z" catchtap="zic">
+          <view>{{num}}</view>
+          <view class="shouy-n">我的资产></view>
+        </view>
+        <view class="shouy-z" catchtap="integral">
+          <view>{{user.integral}}</view>
+          <view class="shouy-n">艺呗></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="nav" bindtap="all" wx:if='{{user.id == "" || user.id == null}}'>
+  <view class="m-h1">至尊善家服务</view>
+  <view class="dind">
+    <view class="din-1">
+      <view class="din-img">
+        <image src="/images/superme_8.png" />
+
+      </view>
+      <view>加油优惠</view>
+    </view>
+    <!-- <view class="din-1" >
+      <view class="din-img">
+        <image src="../../images/d-fh.png" />
+      
+      </view>
+      <view>善家充电</view>
+    </view>
+    <view class="din-1">
+      <view class="din-img">
+        <image src="../../images/d-sh.png" />
+      
+      </view>
+      <view>流量卡</view>
+    </view> -->
+  </view>
+</view>
+
+<view class="nav" wx:else>
+  <view class="m-h1">会员服务</view>
+  <view class="dind" >
+    <view class="din-1" bindtap="huiyuan" wx:if='{{user.memberType == 0}}'>
+      <view class="din-img">
+        <image src="/images/superme_8.png" />
+
+      </view>
+      <view>加油优惠</view>
+    </view>
+    <view class="din-1"  wx:else>
+    <navigator  target="miniProgram" open-type="navigate" app-id="wx1f1ea04b716771be" version="release" path="pages/index/index?platformType=98639258">
+      <view class="din-img">
+        <image src="/images/superme_8.png" />
+      </view>
+      <view>加油优惠</view>
+    </navigator>
+  </view>
+  <view class="din-1" bindtap="huiyuan" wx:if='{{user.memberType == 0}}'>
+      <view class="din-img">
+        <image src="/images/superme_8.png" />
+
+      </view>
+      <view>艺呗商城</view>
+    </view>
+    <view class="din-1"  wx:else>
+    <navigator  target="miniProgram" open-type="navigate" app-id="wxd01b5807647c44d9" version="release" path="pages/mine_yb/mine_yb">
+      <view class="din-img">
+        <image src="/images/superme_2.png" />
+      </view>
+      <view>艺呗商城</view>
+    </navigator>
+  </view>
+  </view>
+  
+  <view class="dind" >
+    
+  </view>
+  
+</view>
+
+
+<!-- <view>
+  <swiper class="banner" indicator-dots="true" circular="true" autoplay="true" duration="1000" indicator-color="#fff" indicator-active-color="#f12200">
+    <block>
+      <swiper-item wx:for='{{banner}}' id="{{item.id}}" bindtap="banner" class='swiper' data-xcx='{{item.xcx}}' data-xcxurl='{{item.xcxUrl}}'>
+        <image class="banner_img" src="{{item.bannerImg}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view> -->
+
+
+<view class="nav nav-t">
+  <view class="m-h1">我的善家</view>
+  <view wx:if='{{user.id == "" || user.id == null}}'></view>
+
+  <view class="shoujih" wx:elif='{{user.phone == "" || user.phone == null}}'>
+    <button class="bangdin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 绑定手机</button>
+  </view>
+
+
+  <view wx:else></view>
+  <view class="dind">
+    <view class="din-1" bindtap="wallet">
+      <view class="din-img">
+        <image src="../../images/d-fk.png" />
+      </view>
+      <view>我的钱包</view>
+    </view>
+    <view class="din-1" bindtap="union">
+      <view class="din-img">
+        <image src="../../images/hy.png" />
+      </view>
+      <view>共享联盟</view>
+    </view>
+    <view class="din-1" bindtap="member">
+      <view class="din-img">
+        <image src="../../images/hy.png" />
+      </view>
+      <view>会员中心</view>
+    </view>
+     <view class="din-1" bindtap="address">
+      <view class="din-img">
+        <image src="../../images/shdz.png" />
+      </view>
+      <view>收货地址</view>
+    </view>
+    <view class="din-1" bindtap="tap_sj">
+      <view class="din-img">
+        <image src="../../images/sjrz.png" />
+      </view>
+      <view>商户入驻</view>
+
+    </view>
+    <view class="din-1" bindtap="tap_din">
+      <view class="din-img">
+        <image src="../../images/yjfk.png" />
+      </view>
+      <view>订单</view>
+
+    </view>
+    <view class="din-1" bindtap="imgsrcs">
+      <view class="din-img">
+        <image src="../../images/gzgzh.png" />
+      </view>
+      <view>关注公众号</view>
+
+    </view>
+    <view class="din-1" bindtap="kahji">
+      <view class="din-img">
+        <image src="../../images/jx.png" />
+      </view>
+      <view>卡号激活</view>
+
+    </view>
+  </view>
+
+</view>
+
+
+
+<tui-modal show="{{modal5}}" bind:click="handleClick5" bind:cancel="hide5" content="全国加油8折起" color="#333" size="32" shape="circle" button='{{button5}}'>
+
+</tui-modal>
+
+<tui-modal show="{{modal}}" custom="{{true}}">
+  <view class="tui-modal-custom">
+    <view class="tui-modal-custom-text tit">收到至尊兑换券</view>
+    <view class="tui-modal-custom-text tite">你有{{nums}}个至尊兑换券未领取</view>
+
+    <view class="tui-modal-foot">
+      <view bindtap="hide">再想想</view>
+      <view bindtap="handclick">前往领取</view>
+    </view>
+  </view>
+</tui-modal>

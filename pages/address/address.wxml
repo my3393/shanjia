@@ -1,0 +1,77 @@
+<!--pages/address/address.wxml-->
+
+
+
+<!-- 地址为空 -->
+<view class="kong" wx:if='{{detail.length == 0}}'>
+    <view class="kong_img">
+        <image src="../../images/address.png" />
+    </view>
+    <view >您暂时还未添加收货地址</view>
+</view>
+
+<view wx:else>
+   <view class="list" wx:for="{{detail}}" wx:key="{{item.id}}"wx:for-index="idx" data-index='{{idx}}' bindtap='choose' id='{{item.id}}'>
+       <view class="list_name">
+           {{item.consigneeName}} <text > {{item.consigneePhone}}</text>
+       </view>
+       <view class="list_q">{{item.provinceName}} {{item.cityName}} {{item.areaName}} {{item.townName}}
+          {{item.detailAddress}}
+       </view>
+       <view class="list_bott">
+           <view class="switch"  >
+               <switch color="#f12200" checked='{{item.checked}}' catchtap="checked" data-id="{{item.id}}" />
+           </view>
+           <view class="bott_r">
+               <view catchtap="bianji" id="{{item.id}}">编辑</view>
+               <view  catchtap="detel" data-id="{{item.id}}">删除</view>
+           </view>
+       </view>
+   </view>
+</view>
+
+<view style="height:120rpx"></view>
+
+<!-- <view class="footer">
+    <view >
+
+        <text > + </text>
+
+        新增地址
+    </view>
+    <view bindtap="wx_add">
+        <view class="wx_img">
+          <image src="../../images/wxapp.png" />
+        </view>
+        导入微信地址
+    </view>
+</view> -->
+<view wx:if='{{detail.length == 10}}'></view>
+<view class="footer" wx:else>
+   <view class="add" bind:tap="add">
+        <text >+ </text>
+    新增地址
+   </view>
+</view>
+<van-dialog
+  
+  show="{{ isdelete }}"
+  show-cancel-button
+  title='确定删除该地址？'
+
+  bind:confirm='confirm'
+  bind:cancel='cancel'
+  confirm-button-color='#f12200'
+ 
+>
+  <!-- <image src="https://img.yzcdn.cn/1.jpg" /> -->
+</van-dialog>
+<!-- <view class="popup" hidden="{{isdelete}}">
+        <view class="popup_h1">确定删除该地址？</view>
+      
+        <view class="popup_btn">
+              <view bindtap="cancel">取消</view>
+              <view bindtap="confirm">确定</view>
+        </view>
+</view>
+<view class="mask" hidden="{{ismask}}" catchtouchmove='true'></view> -->

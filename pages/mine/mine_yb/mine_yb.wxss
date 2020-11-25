@@ -1,0 +1,86 @@
+/* pages/mine_yb/mine_yb.wxss */
+page{
+    background: #f9f9f9;
+    font-size: 26rpx;
+}
+.top{
+    padding: 20rpx;
+    box-sizing: border-box;
+    width: calc(100% - 40rpx);
+    margin-left: 20rpx;
+    margin-top: 40rpx; 
+    background: #fff;
+    border-radius: 12rpx;
+}
+.title{
+   width: 100%;
+   text-align: left;
+}
+.shuom{
+    float: right;
+    color: #999999;
+    font-size: 24rpx;
+}
+.num{
+    margin-top: 45rpx;
+    color: #333;
+    font-size: 40rpx;
+    display: inline-block;
+}
+.tc{
+  margin:  40rpx 0;
+  display: flex;
+  justify-content: space-around;
+}
+.znum{
+    margin-top: 40rpx;
+    width: 170rpx;
+    height: 70rpx;
+    font-size: 22rpx;
+    text-align: center;
+    line-height: 70rpx;
+    color: #fff;
+    float: right;
+    border-radius: 40rpx;
+    background:linear-gradient(to right, #f12200, #ff4e17); 
+}
+.minx{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20rpx;
+  padding: 20rpx 0;
+  padding-bottom: 0;
+  box-sizing: border-box;
+  border-top: 1rpx solid #f9f9f9;
+}
+.minx :nth-child(1){
+   border-right:  1rpx solid #f9f9f9;
+   padding-right: 20rpx;
+   box-sizing: border-box;
+}
+.minx>view{
+  width: 50%;
+
+}  
+.bootm{
+  margin-top: 50rpx;
+}
+.bootm-img{
+    width: 20rpx;
+    height: 20rpx;
+    float: right;
+}
+.bootm-img image{
+    width: 100%;
+    height: 100%;
+}
+.list{
+    margin-left: 20rpx;
+    color: #333333;
+    font-size: 24rpx;
+    margin-top: 50rpx;
+}
+.list view{
+    line-height: 40rpx;
+}

@@ -1,0 +1,201 @@
+<!--packageA/pages/union/order_detail/order_detail.wxml-->
+
+<view class="top">
+  <view  wx:if='{{detail.payStatus == 0 && detail.orderStatus == 0}}'>
+    <view>
+      <view class="top_tu">
+        <image src="/images/daojis.png" />
+      </view>
+      <view class="top_n">等待买家付款</view>
+    </view>
+    <view class="top_tit">到时间后订单将自动关闭</view>
+  </view>
+ 
+  <view  wx:if='{{detail.orderStatus == 2 && detail.sendType == 1}}'>
+    <view>
+      <view class="top_tu">
+        <image src="/images/daojis.png" />
+      </view>
+      <view class="top_n">商家配送中</view>
+    </view>
+    <view class="top_tit">商品正在向您飞奔而来，预计{{detail.presetTime}}送达</view>
+  </view>
+  <view  wx:if='{{detail.orderStatus == 2 && detail.sendType == 2}}'>
+    <view>
+      <view class="top_tu">
+        <image src="/images/daojis.png" />
+      </view>
+      <view class="top_n">商家已打包</view>
+    </view>
+    <view class="top_tit">请按预定时间前往目的地领取</view>
+  </view>
+  <view  wx:if='{{detail.orderStatus == 4}}'>
+    <view>
+      <view class="top_tu">
+        <image src="/images/daojis.png" />
+      </view>
+      <view class="top_n" wx:if='{{ detail.sendType == 1}}'>商品已收货</view>
+      <view class="top_n" wx:if='{{ detail.sendType == 2}}'>商品已提走</view>
+    </view>
+    <view class="top_tit">感谢你的信任，期待再次光临</view>
+  </view>
+  <view  wx:if='{{detail.orderStatus == 5}}'>
+    <view>
+      <view class="top_tu">
+        <image src="/images/daojis.png" />
+      </view>
+      <view class="top_n">订单已取消</view>
+    </view>
+    <view class="top_tit">卖家已取消(商品已售完）</view>
+  </view>
+  <view  wx:if='{{detail.orderStatus == 6}}'>
+    <view>
+      <view class="top_tu">
+        <image src="/images/daojis.png" />
+      </view>
+      <view class="top_n">订单已关闭</view>
+    </view>
+    <view class="top_tit">已过付款时间</view>
+  </view>
+</view>
+
+<view class="nav" wx:if='{{ detail.sendType == 1}}'>
+ <view style="padding:20rpx;box-sizing: border-box">
+    <view>
+      <view class="logistics_img">
+        <image src="/images/weizi.png" />
+      </view>
+      <view class='logistics_n'>
+        {{detail.consigneeName}}
+        <text>{{detail.consigneePhone}}</text>
+      </view>
+    </view>
+    <view class="logistics_diz">{{detail.provinceName}} {{detail.cityName}} {{detail.areaName}} {{detail.townName}} {{detail.detailAddress}}</view>
+  </view>
+ 
+  <view class="peis">
+    <view>配送方式</view>
+  
+    <view >商家配送</view>
+  </view>
+  <view class="peis">
+    <view>送到时间</view>
+    <view> {{detail.presetTime}}</view>
+  </view>
+</view>
+<view class="nav" wx:if='{{ detail.sendType == 2}}'>
+  <view class="peis">
+    <view>配送方式</view>
+    <view>到店自提</view>
+  </view>
+  <view class="peis">
+    <view>自提时间</view>
+    <view>{{detail.presetTime}}</view>
+  </view>
+  <view class="peis">
+    <view>自提电话</view>
+    <view>{{detail.presetPhone}}</view>
+  </view>
+  <view class="peis" bindtap="go">
+    <view>提货地址</view>
+    <view class="dit">
+      <image src="/images/weizi.png"></image>
+      查看地图
+    </view>
+  </view>
+  <view class="peis">
+    {{detail.storeAddress}}
+  </view>
+</view>
+<view class="nav">
+  <view class="list clearfix" bindtap="detail" id="{{detail.storeId}}">
+    <view class="nav_top">
+      <view class="sotre_img">
+        <image src="/images/store.png" />
+      </view>
+      {{detail.storeName}}
+      <view class="store_r">
+        <image src="/images/right.png" />
+      </view>
+    </view>
+    <view wx:for='{{detail.products}}' class="clearfix" style="margin-bottom:20rpx;">
+      <view class="good_img">
+        <image src="{{item.productImgOss}}" />
+        
+      </view>
+      <view class="good_list">
+        <view class='goodsname dan'>{{item.productName}}</view>
+        
+        <view class="guig" wx:if='{{item.isSpecification == 1}}'>
+          <view class='gui-g'  wx:for='{{sku.skus}}' wx:key="{{item.id}}">{{item.value}}</view>
+        </view>
+        <text class='price' ><text class="yuan">￥</text>{{item.price}}</text>
+        <!-- <text class='price' wx:else><text class="yuan">￥</text>{{sku.price}}</text> -->
+        <view class="good_num">×{{item.buyCount}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="nav" style="top:-30rpx;">
+  <view class="list clearfix">
+    <view class="price_list">
+      商品总额
+      <view class="price_r">
+        ￥{{detail.productMoney}}
+      </view>
+    </view>
+    <view class="price_list">
+      配送费
+      <view class="price_r">
+        ￥{{detail.postageFee}}
+      </view>
+    </view>
+    <view class="price_list">
+      会员优惠
+      <view class="price_r">
+        ￥{{detail.deductionMoney}}
+      </view>
+    </view>
+    <view class="price_list">
+      艺呗抵扣
+      <view class="price_r yan">
+        {{detail.deductionIntegral}}
+      </view>
+    </view>
+
+    <view class="z_right">
+      实付费:
+      <text class="yan font">￥{{z_price}}</text>
+    </view>
+  </view>
+
+</view>
+
+<view class="nav">
+  <view class="dind">订单编号：{{detail.payNo}}</view>
+  <view class="dind" wx:if='{{detail.createTime != null}}'>下单时间：{{detail.createTime}}</view>
+  <view class="dind" wx:if='{{detail.payTime != null}}'>付款时间：{{detail.payTime}}</view>
+
+  <view class="dind" wx:if='{{detail.cancelTime != null}}'>取消时间：{{detail.cancelTime}}</view>
+
+  <view class="dind" bindtap="phone">
+    <view class="lix">
+      联系商家：
+    </view>
+    <view class="phone">
+      <image src="/images/boda.png" />
+    </view>
+    拨打电话
+  </view>
+</view>
+<view style="height:120rpx;"></view>
+<view class="footeres" wx:if='{{detail.payStatus == 0 && detail.orderStatus == 0}}'>
+  <view class="footeres_r">
+
+    <view class="tuik fuk" bindtap="pay">付款</view>
+    <!-- <picker class="picker" mode='selector' id="{{2}}" value="{{index}}" range="{{cancel}}" range-key="name" bindchange="bindcancel">
+      <view class="tuik" >取消订单</view>
+    </picker> -->
+  </view>
+</view>

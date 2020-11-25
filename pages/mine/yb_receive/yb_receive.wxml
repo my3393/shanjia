@@ -1,0 +1,20 @@
+<!--pages/yb_receive/yb_receive.wxml-->
+<view>
+  <view class="nav " wx:for='{{detail}}'>
+    <view>{{item.createDate}}</view>
+    <view class="list clearfix">
+      {{item.integralInfo}}
+      <view class="rig" wx:if="{{item.type == 0 && item.sendUserId != item.userId}}">
+        <view bindtap="tuih" id="{{item.id}}">退回</view>
+        <view bindtap="shoux" id="{{item.id}}">收下</view>
+      </view>
+      <view class="shoux" wx:elif='{{item.type == 1}}'>
+          已收下
+      </view>
+       <view class="tuih" wx:elif='{{item.type == 2}}'>
+          已退回
+      </view>
+    </view>
+
+  </view>
+</view>

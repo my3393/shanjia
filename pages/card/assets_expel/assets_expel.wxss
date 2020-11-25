@@ -1,0 +1,133 @@
+/* pages/assets_expel/assets_expel.wxss */
+/* pages/yb_zeng/yb_zeng.wxss */
+page{
+  background: #f9f9f9
+}
+.nav{
+  padding:30rpx 20rpx;
+  box-sizing: border-box;
+  width: calc(100% - 40rpx);
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  background: #fff;
+}
+.lef{
+  float: left;
+  margin-top: 30rpx;
+  margin-right: 90rpx;
+}
+
+.sm{
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  line-height: 50rpx;
+}
+.head>image{
+  width: 70rpx;
+  height: 70rpx;
+  float: left;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+}
+.tit{
+  text-align: center;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+}
+.tite{
+  color: #999999;
+  line-height: 64rpx;
+}
+.minz{
+ 
+ line-height: 112rpx;
+}
+.xia_i{
+  display: inline-block;
+  font-size: 26rpx;
+  color: #999999;
+}
+.inp{
+  display: inline-block;
+  border-bottom: 1rpx solid #CCCCCC;
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.xia{
+  margin-right: 30rpx;
+  float: left;
+}
+.quan{
+  color: red;
+  float: right;
+}
+.but{
+  width: calc(100% - 60rpx);
+  margin-left: 30rpx;
+  height: 80rpx;
+  color: #fff;
+   border-radius: 40rpx;
+    background:linear-gradient(to right, #f12200, #ff4e17); 
+    margin-top: 40rpx;
+    line-height: 80rpx;
+}
+.inpt{
+  display: inline-block;
+  border-bottom: 1rpx solid #CCCCCC;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  margin-left: 36rpx;
+  width: 100%;
+   color: #000;
+}
+.nav{
+  padding: 0;
+}
+.inpts{
+  display: inline-block;
+  border-bottom: 1rpx solid #CCCCCC;
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  width: 110%;
+  color: #000;
+}
+.imag{
+  margin-top: 60rpx;
+  width: 100%;
+  text-align: center;
+
+}
+.imag image{
+  width: 250rpx;
+  height: 250rpx;
+}
+.tag>view{
+  width: 50%;
+  height: 79rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 79rpx;
+  background: #f9f9f9;
+  color: #666;
+}
+.active{
+  background: #fff !important;
+  color: #000 !important;
+}
+.tar{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.card{
+   width: calc(100% - 40rpx);
+  margin-left: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: rgba(244, 43, 5, 0.4);
+  color: #f12200;
+}

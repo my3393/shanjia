@@ -1,0 +1,378 @@
+/* pages/mine/mine.wxss */
+page{
+    background: #f9f9f9;
+}
+.shoujih{
+  color: #f12200;
+  float: right;
+}
+.header {
+  display: flex;
+  align-items: center;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #FFF;
+  z-index: 99999;
+  border-bottom: 1rpx solid #f6f6f6;
+}
+button::after{
+border:none;
+}
+.d-img{
+  width: 100%;
+  height: 180rpx;
+  display: inline-block;
+}
+.d-img image{
+  width: 100%;
+  height: 100%
+}
+.bangdin{
+  padding: 0;
+  background: #fff;
+  line-height: 40rpx;
+  color: red;
+  font-size: 26rpx;
+}
+.top_img{
+        width: 100%;
+        height: 320rpx;
+        position: relative;
+        background-size: cover;
+        background-image: url(../../images/mine_top.png);
+}
+.ewm{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 55rpx;
+}
+.hhr{
+  position: absolute;
+  top: 120rpx;
+  right: 30rpx;
+  color: #fff;
+  font-size: 26rpx;
+}
+.top{
+   
+    height: 320rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: absolute;
+    top: 20rpx;
+    width: 100%;
+}
+
+.tops{
+    width: 100%;
+    height: 150rpx;
+   
+    padding: 40rpx;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0rpx;
+    left: 0rpx;   
+}
+.tops-t{
+    margin-top: 16rpx;
+    
+}
+.tops-img{
+    width: 70rpx;
+    height: 70rpx;
+    float: left;
+    margin-right: 20rpx;
+}
+.tops-img image{
+    width: 100%;
+    height: 100%;
+}
+.tops-n{
+    display: inline-block;
+    color: #fff;
+    font-size: 22rpx;
+}
+.t-bottom{
+    position: absolute;
+    bottom: -75rpx;
+    left: 0;
+    width: 100%;
+    height: 158rpx;
+    background:#fff;
+    border-radius: 50%;
+}
+.top-tx{
+ margin-left: 20rpx;
+ width: 100%;
+ box-sizing: border-box；
+}
+.tx{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+    margin-right: 20rpx;
+}
+.tx image{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.dengl{
+    display: inline-block;
+    color: #fff ;
+    margin-top: 20rpx;
+    
+}
+.chak{
+    font-size: 20rpx;
+    margin-top: 10rpx;
+}
+.person{
+    color: #fff;
+    font-size: 36rpx;
+    display: inline-block;
+}
+.per-n{
+    display: inline-block;
+    vertical-align: middle;
+}
+.hui{
+    width: 32rpx;
+    height: 32rpx;
+    display: inline-block;
+    margin-left: 10rpx;
+    
+}
+.hui image{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.gongy{
+    font-size: 26rpx;
+    color: #fff;
+    position: relative;
+    top: -6rpx;
+    display: inline-block;
+}
+.gongy image{
+  width: 100rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+
+.aix image{
+    margin-top: 5rpx;
+}
+.jies{
+    font-size: 22rpx;
+    width: 360rpx;
+}
+.members{
+    background: #F9A41D;
+    width: 150rpx;
+    height: 44rpx;
+    float: right;
+    border-top-left-radius: 40rpx;
+    border-bottom-left-radius: 40rpx;
+    margin-right: 20rpx;
+}
+.kait {
+   margin-top: 4rpx;
+    margin-left: 20rpx;
+    float: left;
+    margin-right: 12rpx;
+}
+.kait image{
+    width: 28rpx;
+    height: 28rpx;
+  
+}
+.kait-n{
+    
+    font-size: 22rpx;
+    color: #fff;
+    margin-left: 6rpx;
+    position: relative;
+    top: 8rpx;
+}
+.shouyi{
+    margin-top: 60rpx;
+    width: calc(100% - 40rpx);
+    margin-left: 10rpx;
+    height: 120rpx;
+    
+    /* border-bottom-left-radius: 60rpx;
+    border-bottom-right-radius: 60rpx; */
+    position: absolute;
+    bottom: 15rpx;
+    left: 10rpx;
+   
+    border-radius: 12rpx;
+}
+.shouy-z{
+    display: inline-block;
+    width: 33%;
+    color: #9F6F45;
+    margin-top: 20rpx;
+    text-align: center;
+}
+.heng{
+    width: 4rpx;
+    height: 76rpx;
+    background: #333 ;
+    opacity: 0.3;
+    
+    display: inline-block;
+    position: relative;
+    top: 14rpx;
+    left: 0;
+}
+.shouy-n{
+    font-size: 22rpx;
+}
+.nav{
+    padding:20rpx;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+    background: #fff;
+    width: calc(100% - 40rpx);
+    margin-left: 20rpx;
+    margin-top: 100rpx;
+    padding-bottom: 50rpx;
+}
+.m-h1{
+    color: #333333;
+    font-size: 28rpx;
+    font-weight: 550;
+    display: inline-block;
+}
+.m-right{
+    float: right;
+}
+.m-r-img{
+    width: 18rpx;
+    height: 18rpx;
+    display: inline-block;
+}
+.m-r-q{
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 26rpx;
+    margin-right: 10rpx;
+}
+.m-r-img image{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.dind{
+    font-size: 22rpx;
+    color: #999;
+    
+     margin-top: 40rpx;
+}
+.din-1{
+    text-align: center;
+    width: 25%;
+     display: inline-block; 
+     margin-bottom: 20rpx;
+}
+.din-img{
+    width: 48rpx;
+    height: 48rpx;
+    display: inline-block;
+    position: relative;
+}
+.din-img image{
+    width: 100%;
+    height: 100%;
+}
+.hong{
+    position: absolute;
+    top: -14rpx;
+    right: -10rpx;
+    width: 24rpx;
+    height: 24rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    background: red;
+    text-align: center;
+    line-height: 24rpx;
+    font-size: 14rpx;
+    color: #fff;
+}
+.nav-t{
+    margin-top: 20rpx;
+}
+.banner{
+    width: calc(100% - 40rpx);
+    margin-left: 20rpx;
+    height: 140rpx;
+    margin-top: 20rpx;
+}
+.banner image{
+    width: 100%;
+    height: 100%;
+}
+/* 指南 */
+.sai-yds{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 12;
+}
+
+.sai-yd{
+	position:absolute;
+  width: calc(100% - 180rpx);
+  margin-left: 90rpx;
+	top: 15%;
+  
+  background: #fff;
+ 
+  padding-bottom: 40rpx;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+}
+.zhi_img{
+  padding: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+  height: 650rpx;
+}
+.zhi_img image{
+  width: 100%;
+  height: 100%;
+}
+
+.zhi_but{
+  width: calc(100% - 40rpx);
+  height: 80rpx;
+  color: #fff;
+  border-radius: 45rpx;
+  text-align: center;
+  line-height: 80rpx;
+  margin-top: 50rpx;
+  background:linear-gradient(to right, #f12200, #ff4e17);
+  margin-left: 20rpx;
+}
+.tit{
+  text-align: center;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+}
+.tite{
+  color: #999999;
+  line-height: 64rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+}

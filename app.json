@@ -1,0 +1,87 @@
+{
+  "pages": [
+    "pages/community/community",
+    "pages/store_home/store_home",
+    "pages/stay_ruz/stay_ruz",
+    "pages/today/seckill/seckill",
+    "pages/union/home/home",
+    "pages/union/shop_open/shop_open",
+    "pages/union/enter/enter",
+    "pages/union/problem/problem",
+    "pages/union/enter2/enter2",
+    "pages/today/order/order",
+    "pages/union/order_list/order_list",
+    "pages/union/order_detail/order_detail",
+    "pages/union/order_sure/order_sure",
+    "pages/union/pay_success/pay_success",
+    "pages/members/members",
+    "pages/login/login",
+    "pages/bindphone/login",
+    "pages/e_mine/mine",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/home/home",
+    "pages/card/mine_assets/mine_assets",
+    "pages/card/assets_expel/assets_expel",
+    "pages/zhin2/zhin",
+    "pages/card/assets_mx/assets_mx",
+    "pages/mine/mine_wallet/mine_wallet",
+    "pages/mine/union/union",
+    "pages/mine/unions/unions",
+    "pages/mine/wallet_detail/wallet_detail",
+    "pages/mine/wallet_withdrawal/wallet_withdrawal",
+    "pages/mine/mine_yb/mine_yb",
+    "pages/mine/yb_receive/yb_receive",
+    "pages/mine/yb_detail/yb_detail",
+    "pages/mine/yb_trun/yb_trun",
+    "pages/mine/yb_zeng/yb_zeng",
+    "pages/zhin/zhin",
+    "pages/store_detail/store_detail",
+    "pages/address/address",
+    "pages/add_address/add_address",
+    "pages/activation/activation",
+    "pages/e_store/e_store"
+  ],
+  "tabBar": {
+    "color": "#808080",
+    "selectedColor": "#f12200",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/home-active.png",
+        "iconPath": "images/home.png",
+        "pagePath": "pages/home/home",
+        "text": "致富商城"
+      },
+      {
+        "selectedIconPath": "images/community_active.png",
+        "iconPath": "images/community.png",
+        "pagePath": "pages/community/community",
+        "text": "致富联盟"
+      },
+    
+      {
+        "selectedIconPath": "/images/mine-active.png",
+        "iconPath": "/images/mine.png",
+        "pagePath": "pages/e_mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxd01b5807647c44d9"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f12200",
+    "navigationBarTitleText": "致富包",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json"
+}

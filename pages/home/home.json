@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "van-popup": "../../../component/popup/index",
+    "tui-modal": "../../../component/modal/modal",
+    "tui-button": "../../../component/button/button"
+  }
+}

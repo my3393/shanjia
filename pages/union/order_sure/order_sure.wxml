@@ -1,0 +1,247 @@
+<!--packageA/pages/union/order_sure/order_sure.wxml-->
+
+<view class="nav">
+  <view class="tag">
+    <view wx:for="{{type}}" wx:key="item" wx:for-index="index" id="{{item.id}}" bindtap="tag" data-num='{{index}}' class='{{tar == index?"active":""}}'>
+      {{item}}
+    </view>
+  </view>
+  
+ <view wx:if='{{tar == 0}}'>
+    <view>
+      <view wx:if='{{adress.length != 0}}' bindtap='choose'>
+        <view class="address">
+          <view class="address_top">
+            <text class="mor" wx:if='{{adress.isDefault == 1}}'>默认</text> {{adress.provinceName}} {{adress.cityName}} {{adress.areaName}} {{adress.townName}}
+          </view>
+          <view class="address_cent">
+            {{adress.detailAddress}}
+          </view>
+          <view class="address_cent_r">
+            >
+          </view>
+          <view class="address_bott">
+            {{adress.consigneeName}}
+            <text style='color:#999'>  {{adress.consigneePhone}}</text>
+          </view>
+        </view>
+
+      </view>
+      <view wx:elif='{{defalutaddres.length != 0}}' bindtap='choose'>
+        <view class="address">
+          <view class="address_top">
+            <text class="mor">默认</text> {{defalutaddres.provinceName}} {{defalutaddres.cityName}} {{defalutaddres.areaName}} {{defalutaddres.townName}}
+          </view>
+          <view class="address_cent">
+            {{defalutaddres.detailAddress}}
+          </view>
+          <view class="address_cent_r">
+            >
+          </view>
+          <view class="address_bott">
+            {{defalutaddres.consigneeName}}
+            <text style='color:#999'> {{defalutaddres.consigneePhone}}</text>
+          </view>
+        </view>
+
+      </view>
+      <view wx:else bindtap="choose">
+        <view class="address">
+
+          <view class="add_address">
+            + 添加收货地址
+          </view>
+          <view class="address_cent_r">
+            >
+          </view>
+
+        </view>
+
+      </view>
+    </view>
+    <view>
+     
+         <!-- <view class="peis" bindtap="onClose">
+        <view>送达时间</view>
+        <view>{{time}}
+          <image src="/images/right.png"></image>
+        </view>
+
+      </view> -->
+    
+    </view>
+  </view>
+  <view wx:if='{{tar == 1}}'>
+    <view class="address" bindtap="go">
+      <view class="address_top" >
+
+        {{store.provinceName}} {{store.cityName}} {{store.areaName}} {{store.townName}}
+        
+      </view>
+      <view class="address_cent">
+        {{store.detailAddress}}
+        
+      </view>
+      <view class="address_cent_r" bindtap="go">
+        <image src="/images/dinw.png"></image>
+      </view>
+      <view class="address_bott">
+        <!-- {{store.consigneeName}} -->
+        <text style='color:red'>
+              {{distance}}
+              </text>
+      </view>
+    </view>
+    <view>
+   
+         <!-- <view class="peis" bindtap="onClose">
+        <view>送达时间</view>
+        <view>{{time}}
+          <image src="/images/right.png"></image>
+        </view>
+
+      </view> -->
+     
+    </view>
+    <view>
+      <view class="peis">
+        <view>预留电话</view>
+        <view>
+          <input placeholder="请输入手机号" type="number" value="{{phone}}" bindinput="phone" style="text-align:right;"></input>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view class="peis">
+        <radio-group bindtap="checked">
+          <radio checked="{{checked}}" class="all_radio" color="#f12200">
+          <view catchtap="web"> 同意《到店自提用户协议》</view>
+          </radio>
+         
+        </radio-group>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="nav">
+  <view class="list clearfix">
+    <view class="nav_top">
+      <view class="sotre_img">
+        <image src="/images/store.png" />
+      </view>
+      {{store.storeName}}
+      <view class="store_r">
+        <image src="/images/right.png" />
+      </view>
+    </view>
+    <view wx:for='{{cart}}' style="margin-bottom:20rpx;">
+      <view class="good_img">
+        <!-- <image src="{{detail.productDefaultImgOss}}" /> -->
+        <image src="{{item.productDefaultImgOss}}"></image>
+      </view>
+      <view class="good_list clearfix">
+        <!-- <view class='goodsname dan'>{{detail.productName}}</view> -->
+        <view class='goodsname dan'>{{item.productName}}</view>
+        <view class="guig">
+          <view class='gui-g' wx:for='{{sku.skus}}' wx:key="{{item.id}}">{{item.value}}</view>
+        </view>
+
+        <text class='price' wx:if='{{item.promotionType == 0}}'><text class="yuan">￥</text>{{item.salePrice}}</text>
+        <text class='price' wx:else><text class="yuan">￥</text>{{item.activityPrice}}</text>
+       
+        <view class="good_num">×{{item.buyCount}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="nav">
+  <view class="list clearfix">
+    <view class="price_list">
+      商品总额
+      <view class="price_r">
+        ￥{{z_price}}
+      </view>
+    </view>
+    <view class="price_list">
+      配送费
+      <view class="price_r">
+        ￥{{store.postageFee}}
+      </view>
+    </view>
+    <!-- <view class="price_list">
+      会员优惠
+      <view class="price_r">
+        ￥{{member_p}}
+      </view>
+    </view> -->
+    <view class="price_list">
+      艺呗抵扣
+      <view class="price_r yan">
+        ￥{{dk_price}}
+      </view>
+    </view>
+
+    <view class="z_right">
+      实付费:
+      <text class="yan font">￥{{zk_price}}</text>
+    </view>
+  </view>
+
+</view>
+
+<view class="nav">
+   <view class="peis">
+      <view>备注</view>
+      <view style="width:80%;text-align:right">
+        <input placeholder="有什么要求可告知店家" bindinput="remark" value="{{remark}}" ></input>
+      </view>
+   </view>
+</view>
+<view style="height:120rpx;"></view>
+<view class='footer'>
+ <view >
+     合计：<view class="price" style="display:inline-block">
+         <text class="yuan">￥</text>{{zk_price}}
+     </view>
+ </view>
+ <button class="pay" size="mini" wx:if='{{user.phone == null || user.phone == ""}}' open-type="getPhoneNumber" 
+  bindgetphonenumber="getPhoneNumber">
+    去支付
+ </button>
+ <button size="mini" wx:else class="pay"  bindtap="pay">
+       去支付
+ </button>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose" round
+  position="bottom"
+ >
+  <van-datetime-picker
+  bind:confirm='confirm'
+  bind:cancel='onClose'
+  type="datetime"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  bind:input="onInput"
+ 
+>
+  </van-datetime-picker>
+
+</van-popup>
+
+
+<van-dialog
+  
+  show="{{ show2 }}"
+  show-cancel-button
+  title='提示'
+  cancel-button-text='不需要'
+  confirm-button-text='去开通'
+  bind:confirm='confirm2'
+  message='开通会员最多抵扣80%哦'
+  confirm-button-color='#f12200'
+ 
+>
+</van-dialog>

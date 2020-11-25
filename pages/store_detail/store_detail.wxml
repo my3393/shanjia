@@ -1,0 +1,160 @@
+<view class="banner_top">
+	<swiper bindchange="swiperChange" class="banner" circular="true" duration="1000" indicator-color="#a7a7a7" indicator-active-color="#fe5ba9">
+		<block>
+			<swiper-item >
+				<image class="banner_img" src="{{detail.productDefaultImgOss}}" mode="aspectFit"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+
+</view>
+
+
+<!-- 价格 会员价 -->
+<view class="conter">
+	<view class="w_price">
+ 
+		<text style="font-size:24rpx;"> 售价￥</text>
+		<view class="disp"  style="margin-right:20rpx" wx:if="{{detail.promotionType == 0}}">
+		  	{{detail.salePrice}}
+    </view>
+    <view class="disp"  style="margin-right:20rpx" wx:else>
+		  	{{detail.activityPrice}}
+		</view>
+   
+		<!-- <view class="disp">
+      
+    	<text style="font-size:24rpx;"> 原价￥</text>
+			<text>{{detail.originalPrice}}</text>
+		
+    </view> -->
+    <view class="yibei">会员艺呗可抵{{detail.money}}</view>
+	</view>
+  
+ <view class="dan sp_j">{{detail.productName}}</view>
+  <view class="sp_jj">{{detail.productExplain}}</view>
+	 <view style="display:inline-block">
+    <view class="sp_jj">销量： <text style="color:#000"> {{detail.totalSaleNum}}</text> </view>
+    
+     <view class="sp_jj">单位： <text style="color:#000"> {{detail.productUnit}}</text></view>
+   </view>
+      <view class="placeanorder" style="float:right" bindtap="addCount">加入购物车</view>
+	</view>
+
+	<!-- 商品详情 -->
+	<view class="shop_detail">
+		<view class="detail_h1">图文详情</view>
+	
+		<view class="detail_img" wx:for='{{detail.productDetailImgOss}}'  bindtap="yul" id="{{item}}">
+			<image src="{{item}}" mode="widthFix"  />
+		</view>
+		
+	</view>
+
+
+<view class="foote">
+  <view class="foote_left">
+    <view bindtap="cart" class="cart">
+      <image src="/images/shop.png"></image>
+      <view class="cart_num" wx:if='{{cart_num != 0}}'>{{cart_num}}</view>
+      <view>购物车</view>
+    </view>
+    <view class="hj">合计：
+      <text class="price"><text style="font-size:14rpx">￥</text >{{z_price}}</text>
+      <text class="sale_page" wx:if='{{cart.length != 0 && store.postageFee != 0}}'>另需配送费 ￥{{store.postageFee}}</text>
+    </view>
+  </view>
+  <view class="foote_right">
+
+    <view>
+      <button size="mine" class='placeanorder' bindtap="submit">
+        结算({{cart_num}})
+
+
+      </button>
+    </view>
+  </view>
+</view>
+
+<!-- 购物车弹窗 -->
+<van-popup show="{{ show2 }}" bind:close="onClose2" position='bottom' custom-style="height: 70%" round>
+  <view class="show2_top" wx:if='{{sendFee > 0}}'>还差{{sendFee}}元配送</view>
+  <view class="show2_top" wx:else>已满足配送要求</view>
+  <view class="show2_midd">
+    <text>共{{cart_num}}件商品</text>
+    <view class="show2_detel" bindtap="c_cart">
+      <image src="/images/detele.png"></image>
+      清空购物车
+    </view>
+  </view>
+  <scroll-view scroll-y='true' class="good_scroll">
+    <view class="show2 clearfix">
+
+
+      <view class="show2_good dan" wx:for='{{cart}}' wx:key='item.id'>
+        <image src="{{item.productDefaultImgOss}}"></image>
+        <view class="dan">{{item.productName}}</view>
+        <view style="margin-top:20rpx">{{item.productUnit}}</view>
+        <view style="margin-top:20rpx">
+          <view wx:if='{{item.promotionType == 0}}'>
+            <text class="price"><text style="font-size:14rpx">￥</text >{{item.salePrice}}</text>
+
+          </view>
+          <view wx:else>
+            <text class="price"><text style="font-size:14rpx">￥</text >{{item.activityPrice}}</text>
+            <text style="color:#ccc">￥{{item.salePrice}}</text>
+
+          </view>
+          <view class='goodsnum'>
+            <view class="suan reduction" id="{{item.productId}}" catchtap="minusCount_num" data-index="{{index}}" data-select-index="{{idx}}">
+              -
+            </view>
+            <view class="shu">{{item.buyCount}}</view>
+            <view class="suan" id="{{item.productId}}" catchtap="addCount_num" data-index="{{index}}" data-select-index="{{idx}}" hover-class="addCount_h">
+              +
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- <view>
+        <view class="show2_midd">
+          <text>失效商品</text>
+          <view class="show2_detel">
+
+            删除
+          </view>
+        </view>
+      </view> -->
+    </view>
+
+  </scroll-view>
+  <view class="foote">
+    <view class="foote_left">
+      <view bindtap="cart" class="cart">
+        <image src="/images/shop.png"></image>
+        <view class="cart_num" wx:if='{{cart_num != 0}}'>{{cart_num}}</view>
+        <view>购物车</view>
+      </view>
+      <view class="hj">合计：
+        <text class="price"><text style="font-size:14rpx">￥</text >{{z_price}}</text>
+        <text class="sale_page" wx:if='{{cart.length != 0 && store.postageFee != 0}}'>另需配送费 ￥{{store.postageFee}}</text>
+      </view>
+    </view>
+    <view class="foote_right">
+
+      <view>
+        <button size="mine" class='placeanorder' bindtap="submit">
+          结算({{cart_num}})
+
+
+        </button>
+      </view>
+    </view>
+  </view>
+</van-popup>
+<!--  -->
+<tui-modal show="{{modal}}" bind:click="handleClick" bind:cancel="hide" content="确定清空购物车吗" color="#333" size="32" shape="circle" button='{{button}}'>
+
+
+</tui-modal>

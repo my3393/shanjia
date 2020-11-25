@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "修改用户昵称",
+  "usingComponents": {
+    "sj": "../../../component/sjg/sjg"
+    
+  }
+}

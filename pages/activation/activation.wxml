@@ -1,0 +1,17 @@
+<!--pages/z_kahao/index.wxml-->
+<view class="resd">
+
+<view style="margin-top:80rpx">
+	<view class="xia">输入激活码</view>
+	<view class="xia_i">
+		<input placeholder="请输入激活码" placeholder-class="picker-size" type="number" class="inpts" bindinput="num" model:value='{{phone}}'></input>
+	</view>
+</view>
+
+
+</view>
+
+<button class="but" bindtap="jihuo">确定</button>
+
+<image style="width:100%;height:440rpx;margin-top:20rpx;" src="/images/memberjs.png"></image>
+<image style="width:100%;height:440rpx;" src="/images/memberjs2.png"></image>
